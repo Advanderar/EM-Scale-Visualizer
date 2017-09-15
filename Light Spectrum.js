@@ -103,7 +103,7 @@ lib.tfontAvailable = function(family, totalTypekitCount) {
 				line.graphics.setStrokeStyle(1).beginStroke("rgba(255,255,255,1)");
 				line.graphics.moveTo(-1,offset);
 		        for(x = 0; x < 550; x++){
-					line.graphics.lineTo(x,(Math.sin(Math.pow(x / 40 ,2) + change) * 30 / (x/500) + offset));
+					line.graphics.lineTo(x,(Math.sin(Math.exp(x/100) + change) * 50 + offset));
 				}
 				stage.update();
 		    }
@@ -187,10 +187,10 @@ lib.tfontAvailable = function(family, totalTypekitCount) {
 				textS.text = "3EHz to 30EHz";
 			}
 			var b = text.getBounds();
-			text.x = (550/2 - b.width/2) + 130; 
+			text.x = (550/2 - b.width/2); 
 			
 			var b2 = textS.getBounds();
-			textS.x = (550/2 - b2.width/2) + 130; 
+			textS.x = (550/2 - b2.width/2); 
 		});
 		
 		// 0 -> 550
@@ -203,7 +203,11 @@ lib.tfontAvailable = function(family, totalTypekitCount) {
 	// Layer 1
 	this.shape = new cjs.Shape();
 	this.shape.graphics.f().s("#FFFFFF").ss(1,1,1).p("ABkkrIAABkIMgHzAAAkrIAABkIuDHz");
-	this.shape.setTransform(403.6,280);
+	this.shape.setTransform(401.6,303);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.lf(["#222222","#FF0000","#FFFF00","#00FF00","#00FFFF","#FF00FF","#222222"],[0.384,0.443,0.51,0.537,0.576,0.635,0.702],-294.9,0,251.6,0).s().p("AwFDIIAAmPMAgLAAAIAAGPg");
+	this.shape_1.setTransform(401.1,353);
 
 	this.text = new cjs.Text("", "20px 'SinkinSans-200XLight'", "#454545");
 	this.text.textAlign = "center";
@@ -212,15 +216,11 @@ lib.tfontAvailable = function(family, totalTypekitCount) {
 	this.text.parent = this;
 	this.text.setTransform(849,89.1);
 
-	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f().s("#FFFFFF").ss(1,1,1).p("Egq9gfPMBV7AAAMAAAA+fMhV7AAAg");
-	this.shape_1.setTransform(275,200);
-
 	this.shape_2 = new cjs.Shape();
-	this.shape_2.graphics.lf(["#222222","#FF0000","#FFFF00","#00FF00","#00FFFF","#FF00FF","#222222"],[0.384,0.443,0.51,0.537,0.576,0.635,0.702],-294.9,0,251.6,0).s().p("AwFDIIAAmPMAgLAAAIAAGPg");
-	this.shape_2.setTransform(403.1,330);
+	this.shape_2.graphics.f().s("#FFFFFF").ss(1,1,1).p("Egq9gfPMBV7AAAMAAAA+fMhV7AAAg");
+	this.shape_2.setTransform(275,200);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_2},{t:this.shape_1},{t:this.text},{t:this.shape}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_2},{t:this.text},{t:this.shape_1},{t:this.shape}]}).wait(1));
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(274,199,902,402);
